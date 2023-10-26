@@ -32,5 +32,13 @@ class Project extends Model
 
     public function technologies() {
         return $this->belongsToMany(Technology::class);
-      }
+    }
+
+    public function getTechnologyBadges(){
+        $_technologies = "";
+        foreach($this->technologies as $technology){
+            $_technologies .= "<span class='badge mx-1' style='background-color:{$technology->color}'>{$technology->label}</span>";
+        }
+        return $_technologies;
+    }
 }
