@@ -21,10 +21,11 @@
             <img src="{{$project->img_path}}" class="card-img-top" alt="...">
             <div class="card-header" style={{$project->getTypeColor()}}>              
               <div>
+                <strong>Type: </strong>
                 @if ($project->type)
-                <strong>Type: </strong> {{$project->type?->label}}                  
+                {{$project->type?->label}}                  
                 @else
-                untyped
+                Untyped
                 @endif
               </div>
               <div>
