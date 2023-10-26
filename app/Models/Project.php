@@ -27,7 +27,7 @@ class Project extends Model
     }
 
     public function getTypeBadge(){
-        return $this->type ? "<span class='badge' style='background-color:{$this->type->color}'>{$this->type->label}</span>" : "Untyped";
+        return $this->type ? "<span class='badge' style='background-color:{$this->type->color}'>{$this->type->label}</span>" : "<span> Untyped </span>";
     }
 
     public function technologies() {
