@@ -25,10 +25,10 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'name'=>['required','string','max:25','unique:projects,id,' . $this->project->id],
-            'repo_path'=>'required|string|url',
-            'img_path'=>'required|string|url',
-            'description'=>'nullable|string',
-            'type_id'=> 'nullable|exists:types,id',
+            'repo_path'=>['required','string','url'],
+            'img_path'=>['required','string','url'],
+            'description'=>['nullable','string'],
+            'type_id'=> ['nullable','exists:types,id'],
             'technologies' => ['nullable', 'exists:technologies,id'],
 
         ];

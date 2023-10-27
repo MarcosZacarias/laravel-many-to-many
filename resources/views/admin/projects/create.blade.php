@@ -84,7 +84,7 @@
                             {{ $message }}
                         </div>
                         @enderror
-                        <div class="col-8">
+                        <div class="col-12">
                             <label for="img_path" class="form-label"><strong>Link image</strong></label>
                             <input 
                             type="url" 
@@ -96,8 +96,8 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>                        
-                        <div class="col-3">
-                            <label for="repo_path" class="form-label"><strong>Name Repository</strong></label>
+                        <div class="col-12">
+                            <label for="repo_path" class="form-label"><strong>Link Repository</strong></label>
                             <input 
                             type="url" 
                             class="form-control @error('repo_path') is-invalid @enderror" 

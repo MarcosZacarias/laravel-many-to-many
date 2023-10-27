@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name', 25);
-            $table->string('repo_path')->unique;
+            $table->string('repo_path')->unique();
             $table->string('slug');
             $table->string('img_path');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
