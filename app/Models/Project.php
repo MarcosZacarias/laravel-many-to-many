@@ -18,6 +18,11 @@ class Project extends Model
         "type_id",
     ] ;
 
+
+    public function getDescriptionIndex($chars = 50){
+        return strlen($this->description) > $chars ? substr($this->description, 0, $chars) ."...": $this->description ;
+    }
+
     public function type(){
         return $this->belongsTo(Type::class);
     }

@@ -41,8 +41,8 @@
         <div class="col-6">
             <label for="color" class="form-label"><strong>Color: </strong></label>
             <input
-                type="text"
-                class="form-control @error('color') is-invalid @enderror"
+                type="color"
+                class="form-control form-control-color @error('color') is-invalid @enderror"
                 id="color"
                 name="color"
                 value="{{ old('color') ?? $type->color }}"
