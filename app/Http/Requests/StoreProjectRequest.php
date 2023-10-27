@@ -25,7 +25,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name'=>'required|string|max:25',
-            'name_repo'=>'required|string',
+            'repo_path'=>'required|string|url',
             'img_path'=>'required|string|url',
             'description'=>'nullable|string',
             'type_id'=> 'nullable|exists:types,id',
@@ -39,8 +39,10 @@ class StoreProjectRequest extends FormRequest
             'name.string' => 'The name must be a string',
             'name.max' => 'The name must be a maximum of 25 characters',
 
-            'name_repo.required'=>'The name repository is obligatory',
-            'name_repo.string' => 'The name repository must be a string',
+            'repo_path.required'=>'The link repository is obligatory',
+            'repo_path.string' => 'The link repository must be a string',
+            'repo_path.url' => 'The link repository must be a URI',
+
             
             'img_path.required' => 'The image path is obligatory',
             'img_path.string' => 'The image path must be a string',

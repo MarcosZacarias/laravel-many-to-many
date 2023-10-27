@@ -94,14 +94,14 @@
                             @enderror
                         </div>                        
                         <div class="col-3">
-                            <label for="name_repo" class="form-label"><strong>Name Repository</strong></label>
+                            <label for="repo_path" class="form-label"><strong>Link Repository</strong></label>
                             <input 
                             type="text" 
-                            class="form-control @error('name_repo') is-invalid @enderror" 
-                            id="name_repo" 
-                            name="name_repo" 
-                            value="{{old('name_repo') ?? $project->name_repo}}">
-                            @error('name_repo')
+                            class="form-control @error('repo_path') is-invalid @enderror" 
+                            id="repo_path" 
+                            name="repo_path" 
+                            value="{{old('repo_path') ?? $project->repo_path}}">
+                            @error('repo_path')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>                        

@@ -21,7 +21,7 @@
               <div class="col-4"><strong>Technologies: </strong>{!! $project->getTechnologyBadges() !!}</div>                                
               @endif
               <div class="col-12"><strong>Description: </strong> {{$project->description}}</div>
-              <div class="col-12"><strong>Link repository: </strong>{{$project->name_repo}}</div>
+              <div class="col-12"><strong>Link repository: </strong><a href="{{$project->repo_path}}">{{$project->repo_path}}</a></div>
               <div class="col-4"><strong>Created at: </strong>{{$project->created_at}}</div>
               <div class="col-4"><strong>Updated at: </strong>{{$project->updated_at}}</div>
           </div>

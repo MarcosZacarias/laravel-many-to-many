@@ -29,7 +29,7 @@ class ProjectSeeder extends Seeder
             $project = new Project();
             $project->type_id = $type_id;
             $project->name = $faker->words(2, true);
-            $project->name_repo = Str::slug($faker->words(2, true));
+            $project->repo_path = $faker->url();
             $project->slug = Str::slug($project->name);
             $project->img_path = $faker->imageUrl(640, 480, 'animals', true);
             $project->description = $faker->paragraphs(3,true);
