@@ -24,7 +24,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|string|max:25|unique:projects,name,' . $this->project->name,
+            'name'=>['required','string','max:25','unique:projects,id,' . $this->project->id],
             'repo_path'=>'required|string|url',
             'img_path'=>'required|string|url',
             'description'=>'nullable|string',
