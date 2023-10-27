@@ -55,12 +55,41 @@
                             </div>
                             @enderror
                         </div>
+                        
+                        <div class="col-12">                            
+                            <label class="form-label"><strong>Technologies</strong></label>
+                            <div class="form-check row row-cols-2 row-cols-lg-4 d-flex g-2 p-0 @error('technologies') is-invalid @enderror">                                
+                                @foreach ($technologies as $technology)
+                                <div class="col">
+                                    <input
+                                    type="checkbox"
+                                    id="technology-{{ $technology->id }}"
+                                    value="{{ $technology->id }}"
+                                    name="technologies[]"
+                                    class="form-check-control"
+                                    @if (in_array($technology->id, old('technologies', $project_technology ?? [])))
+                                    checked
+                                    @endif
+                                    >
+                                    <label for="technology-{{ $technology->id }}">
+                                        {{ $technology->label }}
+                                    </label>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                            
+                        @error('technologies')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                         <div class="col-8">
                             <label for="img_path" class="form-label"><strong>Link image</strong></label>
                             <input 
                             type="url" 
                             class="form-control @error('img_path') is-invalid @enderror" 
-                            id="img_path" 
+                            id="img-path" 
                             name="img_path" 
                             value="{{old('img_path')}}">
                             @error('img_path')
@@ -113,7 +142,7 @@
 @section('scripts')
 <script>
     const previewImg = document.getElementById('preview-image');
-    const srcInput = document.getElementById('thumb');
+    const srcInput = document.getElementById('img-path');
 
     srcInput.addEventListener('change', function() {
         previewImg.src = this.value
