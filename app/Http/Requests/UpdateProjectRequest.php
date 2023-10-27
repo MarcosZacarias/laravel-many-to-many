@@ -29,6 +29,8 @@ class UpdateProjectRequest extends FormRequest
             'img_path'=>'required|string|url',
             'description'=>'nullable|string',
             'type_id'=> 'nullable|exists:types,id',
+            'technologies' => ['nullable', 'exists:technologies,id'],
+
         ];
     }
 
@@ -49,6 +51,9 @@ class UpdateProjectRequest extends FormRequest
             'description.string'=> 'The description must be a string',
 
             'type_id.exists'=> 'The type entered is invalid',
+
+            'tecnologies.exists' => 'The technologies inserted are not valid',
+
 
         ];
     } 
