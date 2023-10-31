@@ -13,7 +13,7 @@ class Project extends Model
         "name",
         "name_repo",
         "slug",
-        "img_path",
+        "cover_img",
         "description",
         "type_id",
     ] ;

@@ -11,7 +11,7 @@
 
   <div class="row">
       <div class="col-4">
-          <img src="{{$project->img_path}}" alt="">
+          <img src="{{$project->cover_img}}" alt="">
       </div>
       <div class="col-8">
           <div class="row g-4">

@@ -27,7 +27,7 @@
 
             <div class="row">
                 <div class="col-4">
-                    <img src="{{$project->img_path}}" alt="" id="preview-image">
+                    <img src="{{$project->cover_img}}" alt="" id="preview-image">
                 </div>
                 <div class="col-8">
                     <div class="row g-4">
@@ -82,14 +82,14 @@
                         </div>
 
                         <div class="col-8">
-                            <label for="img_path" class="form-label"><strong>Link image</strong></label>
+                            <label for="cover_img" class="form-label"><strong>Link image</strong></label>
                             <input 
                             type="url" 
-                            class="form-control @error('img_path') is-invalid @enderror" 
-                            id="img_path" 
-                            name="img_path" 
-                            value="{{old('img_path') ?? $project->img_path}}">
-                            @error('img_path')
+                            class="form-control @error('cover_img') is-invalid @enderror" 
+                            id="cover_img" 
+                            name="cover_img" 
+                            value="{{old('cover_img') ?? $project->cover_img}}">
+                            @error('cover_img')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>                        

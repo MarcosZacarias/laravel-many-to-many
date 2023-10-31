@@ -20,7 +20,7 @@
         </div>
         @endif
 
-        <form action="{{route('admin.projects.store')}}" method="POST">
+        <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="row">
@@ -85,14 +85,14 @@
                         </div>
                         @enderror
                         <div class="col-12">
-                            <label for="img_path" class="form-label"><strong>Link image</strong></label>
+                            <label for="cover_img" class="form-label"><strong>Image</strong></label>
                             <input 
-                            type="url" 
-                            class="form-control @error('img_path') is-invalid @enderror" 
+                            type="file" 
+                            class="form-control @error('cover_img') is-invalid @enderror" 
                             id="img-path" 
-                            name="img_path" 
-                            value="{{old('img_path')}}">
-                            @error('img_path')
+                            name="cover_img" 
+                            value="{{old('cover_img')}}">
+                            @error('cover_img')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>                        

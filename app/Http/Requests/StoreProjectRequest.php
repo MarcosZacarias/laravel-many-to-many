@@ -26,7 +26,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'name'=>'required|string|max:25',
             'repo_path'=>'required|string|url',
-            'img_path'=>'required|string|url',
+            'cover_img'=>['nullable', 'image', 'max:512'],
             'description'=>'nullable|string',
             'type_id'=> 'nullable|exists:types,id',
             'technologies' => ['nullable', 'exists:technologies,id'],
@@ -44,9 +44,8 @@ class StoreProjectRequest extends FormRequest
             'repo_path.url' => 'The link repository must be a URI',
 
             
-            'img_path.required' => 'The image path is obligatory',
-            'img_path.string' => 'The image path must be a string',
-            'img_path.url' => 'The image path must be a URI',
+            'cover_img.image' => 'The inserted file must be an image',
+            'cover_img.max' => 'The inserted file must have a size smaller than 512KB',
 
             'description.string'=> 'The description must be a string',
 
