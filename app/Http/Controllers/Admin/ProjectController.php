@@ -57,8 +57,8 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::slug($project->name);
 
-        if (Arr::exists($data,'cover_img')) {
-        $project->cover_img = Storage::put('uploads/posts/cover_img', $data['cover_img']);
+        if ($request->hasFile('cover_img')) {
+        $project->cover_img = Storage::put('uploads/projects/cover_img', $data['cover_img']);
         }
 
         $project->save();
@@ -105,8 +105,17 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
+        // dd($data);
+        $project->fill($data);
+        $project->slug = Str::slug($project->name);
 
-        $project->update($data);
+        if ($request->hasFile('cover_img')) {
+            if ($project->cover_img){
+                Storage::delete($data['cover_img']);
+            }
+            $project->cover_img=Storage::put('uploads/projects/cover_img', $data['cover_img']);
+        };
+        $project->save();
 
         if(Arr::exists($data, "technologies"))
             $project->technologies()->sync($data["technologies"]);

@@ -20,14 +20,14 @@
         </div>
         @endif
 
-        <form action="{{route('admin.projects.update', $project)}}" method="POST">
+        <form action="{{route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             @method('PUT')
 
             <div class="row">
                 <div class="col-4">
-                    <img src="{{$project->cover_img}}" alt="" id="preview-image">
+                    <img src="{{asset('/storage/'. $project->cover_img)}}" alt="" id="preview-image">
                 </div>
                 <div class="col-8">
                     <div class="row g-4">
@@ -82,13 +82,13 @@
                         </div>
 
                         <div class="col-8">
-                            <label for="cover_img" class="form-label"><strong>Link image</strong></label>
+                            <label for="cover_img" class="form-label"><strong>Image</strong></label>
                             <input 
-                            type="url" 
+                            type="file" 
                             class="form-control @error('cover_img') is-invalid @enderror" 
                             id="cover_img" 
                             name="cover_img" 
-                            value="{{old('cover_img') ?? $project->cover_img}}">
+                            value="{{old('cover_img')}}">
                             @error('cover_img')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -139,10 +139,11 @@
 @section('scripts')
 <script>
     const previewImg = document.getElementById('preview-image');
-    const srcInput = document.getElementById('thumb');
+    const inputFile = document.getElementById('cover_img');
 
-    srcInput.addEventListener('change', function() {
-        previewImg.src = this.value
+    inputFile.addEventListener('change', function() {
+        const [file] = this.files
+        previewImg.src= URL.createObjectURL(file);
     })
 
 </script>
