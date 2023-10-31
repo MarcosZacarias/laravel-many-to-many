@@ -3,17 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
+use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
-use App\Models\Project;
+
 use App\Models\Technology;
+
 use App\Models\Type;
+
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Validated;
+
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
-
-
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -52,6 +56,11 @@ class ProjectController extends Controller
         $project = new Project;
         $project->fill($data);
         $project->slug = Str::slug($project->name);
+
+        if (Arr::exists($data,'cover_img')) {
+        $project->cover_img = Storage::put('uploads/posts/cover_img', $data['cover_img']);
+        }
+
         $project->save();
         
         // dd($data['technologies']);
