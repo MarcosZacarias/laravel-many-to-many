@@ -141,6 +141,10 @@
     const previewImg = document.getElementById('preview-image');
     const inputFile = document.getElementById('cover_img');
 
+    if (!previewImg.getAttribute('src') || previewImg.getAttribute('src') == "http://127.0.0.1:8000/storage" ){
+        previewImg.src = "https://picsum.photos/200"
+    }
+
     inputFile.addEventListener('change', function() {
         const [file] = this.files
         previewImg.src= URL.createObjectURL(file);
