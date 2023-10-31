@@ -18,7 +18,6 @@
       @forelse ($projects as $project)
       <div class="col">
         <div class="card h-100">
-          <img src="{{$project->cover_img}}" class="card-img-top" alt="...">
           <div class="card-header" style={{$project->getTypeColor()}}>              
             <div>
               <strong>Type: </strong>
