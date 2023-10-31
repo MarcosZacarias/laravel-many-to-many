@@ -11,7 +11,7 @@ class Project extends Model
 
     protected $fillable = [
         "name",
-        "name_repo",
+        "repo_path",
         "slug",
         "cover_img",
         "description",
