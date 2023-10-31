@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name', 25);
             $table->string('repo_path')->unique();
             $table->string('slug');
-            $table->string('cover_img');
+            $table->string('cover_img')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
