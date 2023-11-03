@@ -108,11 +108,14 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::slug($project->name);
 
+        
         if ($request->hasFile('cover_img')) {
             if ($project->cover_img) {
                 Storage::delete($project->cover_img);
+                // dd($project);
             }
-            $project->cover_img = Storage::put('uploads/projects/cover_img', $data['cover_img']);
+            $cover_img_path = Storage::put('uploads/projects/cover_img', $data['cover_img']);
+            $project->cover_img = $cover_img_path;
         };
         
         $project->save();
